@@ -89,12 +89,12 @@ def other(stones):
 
 
 stones = [[0,0],[0,1],[1,0],[1,2],[2,1],[2,2]]
-print(removeStones(stones))
-print(other(stones))
+print(removeStones(stones)) # 5
+print(other(stones)) # 5
 
 stones = [[1,2],[1,3],[3,3],[3,1],[2,1],[1,0]]
-print(removeStones(stones))
-print(other(stones))
+print(removeStones(stones)) # 5
+print(other(stones)) # 5
 
 
 """"
