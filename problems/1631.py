@@ -30,6 +30,7 @@ def minimumEffortPath(heights):
         if size[x] > size[y]:
             x, y = y, x
         father[x] = y
+        size[y] += size[x]
 
     for row in range(rows):
         for colum in range(colums):
@@ -60,3 +61,5 @@ def minimumEffortPath(heights):
 
 print(minimumEffortPath([[1,2,2],[3,8,2],[5,3,5]])) # 2
 print(minimumEffortPath([[1,2,1,1,1],[1,2,1,2,1],[1,2,1,2,1],[1,2,1,2,1],[1,1,1,2,1]])) # 0
+
+
