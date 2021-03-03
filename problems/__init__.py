@@ -1,3 +1,3 @@
-from log.code import logger
+from log.mylog import logger
 
 
