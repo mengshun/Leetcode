@@ -120,3 +120,71 @@ node.printNode()
 node = ListNode(0).initListNode([1,2,3,3])
 node = deleteDuplicatesTwo(node)
 node.printNode()
+
+
+
+print("\n\n 测试用例 复习-------")
+
+# 只保留重复的一个元素
+def removeDuplicatesOne(head):
+    if not head or not head.next:
+        return head
+    cur = head
+    while cur:
+        # 1和2的值一样了 就将 1和3相连, 1和3不一样 就移动1的位置到3, 继续3和4进行比较
+        if cur.next and cur.next.val == cur.val:
+            cur.next = cur.next.next
+        else:
+            cur = cur.next
+    return head
+
+
+# 重复的一个都不保留
+def removeDuplicatesTwo(head):
+    if not head or not head.next:
+        return head
+
+    #迭代
+    """
+    1 1 2 3 3
+    创建头发节点 连接头节点1
+    比较节点1和下个节点值  发现一样 移动节点到 第二个1
+    第二个1和下个节点不一致 跳出循环
+    判断头节点的下一个和当前节点是否是同一个节点 发现不是 则连接到2节点
+    """
+    hair = ListNode()
+    hair.next = head
+    pre = hair
+    cur = pre.next
+    while cur:
+        while cur.next and cur.next.val == cur.val:
+            cur = cur.next
+        if pre.next == cur:
+            pre = cur
+        else:
+            pre.next = cur.next
+        cur = cur.next
+    return hair.next
+
+
+    # # 递归
+    # if head.next.val != head.val:
+    #     head.next = removeDuplicatesTwo(head.next)
+    # else:
+    #     move = head
+    #     while move.next and move.val == move.next.val:
+    #         move = move.next
+    #     return removeDuplicatesTwo(move.next)
+    # return head
+
+
+array_list = [[1,1,2,3,3], [1,1,1,2,3], [1,2,3,3,4,4,5], [1,2,3,3]]
+test_list = [ListNode(0).initListNode(v) for v in array_list]
+for v in test_list:
+    print("\n")
+    v.printNode()
+    res1 = removeDuplicatesOne(v)
+    res1.printNode()
+    # res2 = removeDuplicatesTwo(v)
+    # res2.printNode()
+
