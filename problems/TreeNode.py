@@ -47,7 +47,7 @@ class ListNode:
         self.val = val
         self.next = next
 
-    def printNode(self):
+    def show(self):
         res = []
         current = self
         while current:

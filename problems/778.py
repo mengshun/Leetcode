@@ -60,3 +60,27 @@ def swimInWater(grid):
 
 print(swimInWater([[0,2],[1,3]])) # 3
 print(swimInWater([[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10,9,8,7,6]])) # 16
+
+
+"""
+781. 森林中的兔子  https://leetcode-cn.com/problems/rabbits-in-forest/
+"""
+
+import collections
+def numRabbits(answers):
+    if not answers:
+        return 0
+    counter = collections.defaultdict(int)
+    for v in answers:
+        counter[v] += 1
+    res = 0
+    for k, v in counter.items():
+        res += (k + 1) * (v // (k + 1))
+        if v % (k+1) != 0:
+            res += k + 1
+    return res
+
+
+
+print(numRabbits([1,1,2]))
+print(numRabbits([10,10,10]))
